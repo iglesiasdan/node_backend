@@ -1,10 +1,10 @@
 var express = require('express');
 var mysql=require('mysql');
 var connection=mysql.createConnection({
-	host:'http://saorinoco.com',
-	user:'saorinoco01',
+	host:'localhost',
+	user:'root',
 	password:'saorinoco',
-	database:'saoapp'
+	database:'sao'
 
 });
 connection.connect();
