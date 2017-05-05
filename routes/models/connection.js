@@ -1,7 +1,7 @@
 var express = require('express');
 var mysql=require('mysql');
 var connection=mysql.createConnection({
-	host:'http://198.71.228.20',
+	host:'http://www.saorinoco.com',
 	user:'saorinoco01',
 	password:'saorinoco',
 	database:'saoapp'
