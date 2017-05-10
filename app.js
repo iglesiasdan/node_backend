@@ -2,7 +2,19 @@ var express= require('express');
 var cookieParser= require('cookie-parser');
 var mysql=require('mysql');
 var bodyParser=require('body-parser');
+var multer	=	require('multer');
 var app = express();
+
+var storage	=	multer.diskStorage({
+  destination: function (req, file, callback) {
+    callback(null, './uploads');
+  },
+  filename: function (req, file, callback) {
+    callback(null, file.fieldname + '-' + Date.now());
+  }
+});
+var upload = multer({ storage : storage}).single('userPhoto');
+
 
 
 var usuarios=require('./routes/usuarios');
