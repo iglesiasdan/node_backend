@@ -2,6 +2,9 @@ var express= require('express');
 var cookieParser= require('cookie-parser');
 var mysql=require('mysql');
 var bodyParser=require('body-parser');
+var path = require('path');
+var formidable = require('formidable');
+var fs = require('fs');
 var app = express();
 
 
@@ -28,6 +31,39 @@ app.use('/usuarios',usuarios);
 // GET usuarios/{ID_usuario} =lista el usuario con el id en el url
 // PUT usuario/{ID_usuario} => {privilegio,*contrasena*}= modifica solamente el privilegio y la contrasena del usuario(la contraseña es opcional)
 // DELETE usuario/{ID_usuario} elimina al usuario
+//prueba de upload file
+app.post('/upload', function(req, res){
+	console.log("se recibio una solicitud");
+  // create an incoming form object
+  var form = new formidable.IncomingForm();
+
+  // specify that we want to allow the user to upload multiple files in a single request
+  form.multiples = true;
+
+  // store all uploads in the /uploads directory
+  form.uploadDir = path.join(__dirname, '/uploads');
+
+  // every time a file has been uploaded successfully,
+  // rename it to it's orignal name
+  form.on('file', function(field, file) {
+    fs.rename(file.path, path.join(form.uploadDir, file.name));
+  });
+
+  // log any errors that occur
+  form.on('error', function(err) {
+    console.log('An error has occured: \n' + err);
+  });
+
+  // once all the files have been uploaded, send a response to the client
+  form.on('end', function() {
+    res.end('upload successful');
+  });
+
+  // parse the incoming request containing the form data
+  form.parse(req);
+
+});
+// fin de la prueba
 app.use('/agencias',agencias);
 app.use('/puertos',puertos);
 app.use('/buques',buques);
