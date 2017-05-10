@@ -34,7 +34,7 @@ app.use(function(req,res,next){
 	console.log('Se hizo una peticion el '+ Date.now());
 	next();
 });
-
+ 
 app.post('/api/photo',function(req,res){
 	upload(req,res,function(err) {
 		if(err) {
