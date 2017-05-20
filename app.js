@@ -51,7 +51,6 @@ app.use('/usuarios',usuarios);
 // PUT usuario/{ID_usuario} => {privilegio,*contrasena*}= modifica solamente el privilegio y la contrasena del usuario(la contraseña es opcional)
 // DELETE usuario/{ID_usuario} elimina al usuario
 //prueba de upload file
-
 // fin de la prueba
 app.use('/estadisticas',estadisticas)
 app.use('/agencias',agencias);

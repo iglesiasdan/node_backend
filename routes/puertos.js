@@ -32,6 +32,7 @@ router.post('/',function(req,res){
 	}
 });
 router.put('/:id',function(req,res){
+		console.log(data);
 		puertos.update(req.params.id,req.body,function(data){
 			res.setHeader('Content-Type','application/json');
 			res.send(JSON.stringify(data));
