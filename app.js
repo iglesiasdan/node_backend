@@ -22,6 +22,7 @@ var agencias=require('./routes/agencias');
 var puertos=require('./routes/puertos');
 var buques=require('./routes/buques');
 var arribos=require('./routes/arribos');
+var estadisticas=require('./routes/estadisticas');
 var estudios=require('./routes/estudios');
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
@@ -34,7 +35,7 @@ app.use(function(req,res,next){
 	console.log('Se hizo una peticion el '+ Date.now());
 	next();
 });
- 
+
 app.post('/api/photo',function(req,res){
 	upload(req,res,function(err) {
 		if(err) {
@@ -52,6 +53,7 @@ app.use('/usuarios',usuarios);
 //prueba de upload file
 
 // fin de la prueba
+app.use('/estadisticas',estadisticas)
 app.use('/agencias',agencias);
 app.use('/puertos',puertos);
 app.use('/buques',buques);
