@@ -30,7 +30,8 @@ puertoModel.update=function(id,input,callback){
 		Descripcion:input.Descripcion,
 		Latitud:input.Latitud,
 		Longitud:input.Longitud,
-		ID_puerto:input.ID_puerto
+		ID_puerto:input.ID_puerto,
+		Estado:input.Estado
 	}
 	connection.query('UPDATE puerto set ? WHERE ID_puerto=?',[puerto,id],function(err,rows,fields){
 		console.log(input);
