@@ -27,6 +27,7 @@ buqueModel.insert=function(input,callback){
 				Vol_total:input.vol_total,
 				Fotos:input.fotos
 			}
+			console.log(buque);
 		connection.query('INSERT INTO buque SET ?',buque,function(err,rows,fields){
 			callback({'Error':false,'id':rows.insertId,'message':'Registro insertado exitosamente'});
 		})
