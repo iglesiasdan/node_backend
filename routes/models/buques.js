@@ -44,16 +44,16 @@ buqueModel.update=function(id,input,callback){
 	buque={
 		Nombre_buque:input.Nombre_buque,
 		Abanderamiento:input.Abanderamiento,
-		Eslora:input.eslora,
-		Manga:input.manga,
-		Puntal:input.puntal,
-		N_tanques_babor:input.n_tanques_babor,
+		Eslora:input.Eslora,
+		Manga:input.Manga,
+		Puntal:input.Puntal,
+		N_tanques_babor:input.N_tanques_babor,
 		N_tanques_estribor:input.N_tanques_estribor,
-		N_tanques_db:input.n_tanques_db,
-		Total_tanques:input.total_tanques,
-		Capacidad_tanques:input.capacidad_tanques,
-		Vol_total:input.vol_total,
-		Fotos:input.fotos
+		N_tanques_db:input.N_tanques_db,
+		Total_tanques:input.Total_tanques,
+		Capacidad_tanques:input.Capacidad_tanques,
+		Vol_total:input.Vol_total,
+		Fotos:input.Fotos
 	}
 	connection.query('UPDATE buque set ? WHERE ID_buque=?',[buque,id],function(err,rows,fields){
 		callback({'Error':false,'affectedRows':rows.affectedRows,'message':'Registro actualizado exitosamente'});
