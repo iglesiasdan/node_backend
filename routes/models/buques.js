@@ -44,6 +44,7 @@ buqueModel.update=function(id,input,callback){
 	buque={
 		Nombre_buque:input.Nombre_buque,
 		Abanderamiento:input.Abanderamiento,
+		Numero_imo:input.Numero_imo,
 		Eslora:input.Eslora,
 		Manga:input.Manga,
 		Puntal:input.Puntal,
