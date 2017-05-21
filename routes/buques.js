@@ -17,7 +17,7 @@ router.get('/',function(req,res){
 });
 router.post('/',function(req,res){
 
-	if (typeof req.body.numero_imo !== 'undefined'){
+	if (typeof req.body.Numero_imo !== 'undefined'){
     	buques.insert(req.body,function(data){
     		res.setHeader('Content-Type','application/json');
     		res.send(JSON.stringify(data));
