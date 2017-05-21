@@ -9,6 +9,7 @@ buqueModel.get=function(callback){
 	});
 }
 buqueModel.insert=function(input,callback){
+		console.log(input);
 		connection.query('SELECT * FROM buque WHERE Numero_imo=?',[input.Numero_imo],function(err,rows,fields){
 		if(err) throw err;
 		if(rows.length==0){
