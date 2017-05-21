@@ -18,7 +18,7 @@ agenciaModel.insert=function(input,callback){
 	})
 }
 agenciaModel.update=function(id,input,callback){
-	console.log(input);
+	console.log(id);
 	connection.query('UPDATE agencia set Nombre_agencia=?, Descripcion=? WHERE ID_agencia=?',[input.Nombre_agencia,input.Descripcion,id],function(err,rows,fields){
 		callback({'Error':false,'affectedRows':rows.affectedRows,'message':'Registro actualizado exitosamente'});
 	})
