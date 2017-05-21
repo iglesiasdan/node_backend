@@ -15,7 +15,7 @@ buqueModel.insert=function(input,callback){
 		if(rows.length==0){
 			buque={
 				Nombre_buque:input.nombre_buque,
-				Numero_imo:input.numero_imo,
+				Numero_imo:input.Numero_imo,
 				Abanderamiento:input.abanderamiento,
 				Eslora:input.eslora,
 				Manga:input.manga,
