@@ -49,5 +49,19 @@ usuarioModel.delete=function(id,callback){
 	  callback({'Error':false,'affectedRows':rows.affectedRows,'message':'Registro eliminado exitosamente'});
 	});
 }
+//Desde aqui
+usuarioModel.login=function(input,callback){
+	connection.query('SELECT  Contrasena from usuario WHERE Username=?',[input.username], function(err, rows, fields) {
+	  if (err) throw err;
+	  if(rows.length==1){
+	  	if(bcrypt.compareSync(input.contrasena, rows[0].Contrasena ))
+		  	callback({'Error':false,'Message':'Login realizado correctamente','Username':input.username});
+		else
+			callback({'Error':true,'Message':'Username o contraseña inválido'});
+	  }else
+	  callback({'Error':true,'Message':'Username o contraseña inválido'});
+	});
+}
+//hasta aqui
 
 module.exports=usuarioModel;

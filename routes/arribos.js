@@ -8,13 +8,23 @@ var bodyParser=require('body-parser');
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({extended:true}));
 
+//desde aqui
 router.get('/',function(req,res){
+	if(req.query.from && req.query.from.length >0){
+		arribos.getFrom(req.query.from,function(data){
+			res.setHeader('Content-Type', 'application/json');
+				res.send(JSON.stringify(data));
+		});
+	}else {
+		arribos.get(function(data){
+			res.setHeader('Content-Type', 'application/json');
+				res.send(JSON.stringify(data));
+		});
+	}
 
-	arribos.get(function(data){
-		res.setHeader('Content-Type', 'application/json');
-    	res.send(JSON.stringify(data));
-	});
 });
+
+//hasta aqui
 router.post('/',function(req,res){
 	if (typeof req.body.id_buque !== 'undefined'
 		&& typeof req.body.id_puerto !== 'undefined'

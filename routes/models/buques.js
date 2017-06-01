@@ -2,12 +2,24 @@ var express= require('express');
 var connection=require('./connection');
 var bcrypt=require('bcrypt-nodejs');
 var buqueModel={};
+//DESDE AQUI
 buqueModel.get=function(callback){
 	connection.query('SELECT * from buque ', function(err, rows, fields) {
 	  if (err) throw err;
 	  callback(rows);
 	});
 }
+
+buqueModel.getFrom=function(id,callback){
+	connection.query(`SELECT * FROM buque WHERE ID_buque>?`,[id],function(err, rows, fields) {
+	  if (err) {
+	  	rows={resp:'Error'};
+	  };
+	  callback(rows);
+	});
+}
+
+//HASTA AQUI
 buqueModel.insert=function(input,callback){
 		console.log(input);
 		connection.query('SELECT * FROM buque WHERE Numero_imo=?',[input.Numero_imo],function(err,rows,fields){

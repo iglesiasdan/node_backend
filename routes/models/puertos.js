@@ -2,12 +2,22 @@ var express= require('express');
 var connection=require('./connection');
 var bcrypt=require('bcrypt-nodejs');
 var puertoModel={};
+//DE AQUI
 puertoModel.get=function(callback){
 	connection.query('SELECT * from puerto ', function(err, rows, fields) {
 	  if (err) throw err;
 	  callback(rows);
 	});
 }
+puertoModel.getFrom=function(id,callback){
+	connection.query(`SELECT * FROM puerto WHERE ID_puerto>?`,[id],function(err, rows, fields) {
+	  if (err) {
+	  	rows={resp:'Error'};
+	  };
+	  callback(rows);
+	});
+}
+//HASTA AQUI
 puertoModel.insert=function(input,callback){
 	console.log(input);
 	sede={

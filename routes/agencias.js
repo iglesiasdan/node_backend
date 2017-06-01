@@ -8,13 +8,25 @@ var bodyParser=require('body-parser');
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({extended:true}));
 
+//DE AQUI
 router.get('/',function(req,res){
 
-	agencias.get(function(data){
-		res.setHeader('Content-Type', 'application/json');
-    	res.send(JSON.stringify(data));
-	});
+	if(req.query.from && req.query.from.length >0){
+		agencias.getFrom(req.query.from,function(data){
+			res.setHeader('Content-Type', 'application/json');
+				res.send(JSON.stringify(data));
+		});
+	}else {
+		agencias.get(function(data){
+			res.setHeader('Content-Type', 'application/json');
+	    	res.send(JSON.stringify(data));
+		});
+	}
+
+
 });
+
+//HASTA AQUI
 router.post('/',function(req,res){
 	if (typeof req.body.nombre_agencia !== 'undefined'){
     	agencias.insert(req.body,function(data){

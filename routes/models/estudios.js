@@ -58,5 +58,21 @@ estudioModel.delete=function(id,callback){
 	  callback({'Error':false,'affectedRows':rows.affectedRows,'message':'Registro eliminado exitosamente'});
 	});
 }
+//DE AQUI
+estudioModel.prom=function(id,callback){
+	connection.query(`SELECT IFNULL(SUM(Capacidad)/COUNT(ID_estudio),0) AS Capacidad,
+	IFNULL(SUM(Volumen)/COUNT(ID_estudio),0 )AS Volumen,
+	IFNULL(SUM(Actividad)/COUNT(ID_estudio),0) AS Actividad,
+	IFNULL(SUM(Salinidad)/COUNT(ID_estudio),0) AS Salinidad,
+	IFNULL(SUM(Temperatura)/COUNT(ID_estudio),0) AS Temperatura,
+	IFNULL(SUM(conductividad)/COUNT(ID_estudio),0) AS Conductividad ,
+	IFNULL(SUM(Ph)/COUNT(ID_estudio),0) AS Ph
+		FROM estudio
+		WHERE ID_arribo=`+id, function(err, rows, fields) {
+		  if (err) throw err;
+		  callback(rows[0]);
+		});
+}
+//HASTA AQUI
 
 module.exports=estudioModel;

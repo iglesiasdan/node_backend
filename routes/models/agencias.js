@@ -2,13 +2,23 @@ var express= require('express');
 var connection=require('./connection');
 var bcrypt=require('bcrypt-nodejs');
 var agenciaModel={};
+//DE AQUI
 agenciaModel.get=function(callback){
 	connection.query('SELECT * from agencia ', function(err, rows, fields) {
 	  if (err) throw err;
 	  callback(rows);
 	});
 }
-agenciaModel.insert=function(input,callback){
+agenciaModel.getFrom=function(id,callback){
+	connection.query(`SELECT * FROM agencia WHERE ID_agencia>?`,[id],function(err, rows, fields) {
+	  if (err) {
+	  	rows={resp:'Error'};
+	  };
+	  callback(rows);
+	});
+}
+
+//HASTA AQUIagenciaModel.insert=function(input,callback){
 	sede={
 		Nombre_agencia:input.nombre_agencia,
 		Descripcion:input.descripcion

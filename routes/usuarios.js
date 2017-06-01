@@ -40,6 +40,25 @@ router.post('/',function(req,res){
 		res.send(JSON.stringify(resp));
 	}
 });
+//desde aqui
+router.post('/login',function(req,res){
+	if (typeof req.body.username !== 'undefined'
+		&& typeof req.body.contrasena!== 'undefined'
+		){
+		usuario.login(req.body,function(data){
+    		res.setHeader('Content-Type','application/json');
+    		res.send(JSON.stringify(data));
+    		})
+		}else{
+			var resp={
+			'Error':true,
+			'Message':'Error, ingrese todos los campos de usuario'
+			}
+			res.setHeader('Content-Type','application/json');
+			res.send(JSON.stringify(resp));
+		}
+});
+//hasta aqui
 router.put('/:id',function(req,res){
 	if(typeof req.body.contrasena !== 'undefined'){
 		usuario.updatePass(req.params.id,req.body,function(data){
