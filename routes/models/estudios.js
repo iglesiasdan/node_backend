@@ -41,10 +41,10 @@ estudioModel.update=function(id,input,callback){
 	})
 }
 estudioModel.show=function(id,callback){
-	connection.query('SELECT * from estudio where ID_estudio='+id, function(err, rows, fields) {
-	  if (err) throw err;
-	  callback(rows);
-	});
+ connection.query('SELECT * from estudio where ID_estudio='+id, function(err, rows, fields) {
+   if (err) throw err;
+   callback(rows[0]);
+ });
 }
 estudioModel.list=function(id,callback){
 	connection.query('SELECT * from estudio where ID_arribo='+id, function(err, rows, fields) {
