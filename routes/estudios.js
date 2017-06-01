@@ -50,6 +50,12 @@ router.get('/arribo/:id',function(req,res){
     	res.send(JSON.stringify(data));
 	});
 })
+router.get('/prom/:id',function(req,res){
+ estudios.prom(req.params.id,function(data){
+  res.setHeader('Content-Type', 'application/json');
+     res.send(JSON.stringify(data));
+ });
+})
 router.delete('/:id',function(req,res){
 	estudios.delete(req.params.id,function(data){
 		res.setHeader('Content-Type', 'application/json');
