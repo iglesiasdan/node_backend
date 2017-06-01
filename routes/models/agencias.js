@@ -18,7 +18,8 @@ agenciaModel.getFrom=function(id,callback){
 	});
 }
 
-//HASTA AQUIagenciaModel.insert=function(input,callback){
+//HASTA AQUI
+agenciaModel.insert=function(input,callback){
 	sede={
 		Nombre_agencia:input.nombre_agencia,
 		Descripcion:input.descripcion
