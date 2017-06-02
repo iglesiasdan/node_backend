@@ -26,23 +26,23 @@ router.get('/',function(req,res){
 
 //hasta aqui
 router.post('/',function(req,res){
-	if (typeof req.body.id_buque !== 'undefined'
-		&& typeof req.body.id_puerto !== 'undefined'
-		&& typeof req.body.id_agencia !== 'undefined'
-		){
-    	arribos.insert(req.body,function(data){
-    		res.setHeader('Content-Type','application/json');
-    		res.send(JSON.stringify(data));
-    	})
+ if (typeof req.body.id_buque !== 'undefined'
+  && typeof req.body.id_puerto !== 'undefined'
+  && typeof req.body.id_agencia !== 'undefined'
+  ){
+     arribos.insert(req.body,function(data){
+      res.setHeader('Content-Type','application/json');
+      res.send(JSON.stringify(data));
+     })
 
-	}else{
-		var resp={
-			'Error':true,
-			'message':'Error, buque, puerto o agencia  no ingresado'
-		}
-		res.setHeader('Content-Type','application/json');
-		res.send(JSON.stringify(resp));
-	}
+ }else{
+  var resp={
+   'Error':true,
+   'message':'Error, buque, puerto o agencia  no ingresado'
+  }
+  res.setHeader('Content-Type','application/json');
+  res.send(JSON.stringify(resp));
+ }
 });
 router.put('/:id',function(req,res){
 		arribos.update(req.params.id,req.body,function(data){
