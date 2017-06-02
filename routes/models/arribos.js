@@ -30,8 +30,6 @@ arriboModel.insert=function(input,callback){
 		ID_puerto:input.id_puerto,
 		ID_agencia:input.id_agencia,
 		Fecha_arribo:input.fecha_arribo,
-		Lat:input.lat,
-		Long:input.long,
 		Calado_proa:input.calado_proa,
 		Calado_popa:input.calado_popa,
 		Diferencias_calado:input.diferencias_calado,
@@ -69,5 +67,7 @@ arriboModel.delete=function(id,callback){
 	  callback({'Error':false,'affectedRows':rows.affectedRows,'message':'Registro eliminado exitosamente'});
 	});
 }
+
+
 
 module.exports=arriboModel;
