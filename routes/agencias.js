@@ -28,21 +28,14 @@ router.get('/',function(req,res){
 
 //HASTA AQUI
 router.post('/',function(req,res){
-	cosole.log(req.body);
-	if (typeof req.body.nombre_agencia !== 'undefined'){
+	//cosole.log(req.body);
+	//if (typeof req.body.nombre_agencia !== 'undefined'){
     	agencias.insert(req.body,function(data){
     		res.setHeader('Content-Type','application/json');
     		res.send(JSON.stringify(data));
     	})
 
-	}else{
-		var resp={
-			'Error':true,
-			'message':'Error nombre de la agencia no ingresado'
-		}
-		res.setHeader('Content-Type','application/json');
-		res.send(JSON.stringify(resp));
-	}
+
 });
 router.put('/:id',function(req,res){
 		agencias.update(req.params.id,req.body,function(data){
