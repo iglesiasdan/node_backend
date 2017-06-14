@@ -28,6 +28,7 @@ router.get('/',function(req,res){
 
 //HASTA AQUI
 router.post('/',function(req,res){
+	cosole.log(req.body);
 	if (typeof req.body.nombre_agencia !== 'undefined'){
     	agencias.insert(req.body,function(data){
     		res.setHeader('Content-Type','application/json');
