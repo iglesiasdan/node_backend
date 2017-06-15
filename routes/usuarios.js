@@ -22,23 +22,10 @@ router.get('/:id',function(req,res){
 	});
 });
 router.post('/',function(req,res){
-	if (typeof req.body.username !== 'undefined'
-			&&  typeof req.body.correo!== 'undefined'
-			&& typeof req.body.contrasena!== 'undefined'
-			&& typeof req.body.privilegio !== 'undefined'){
-    	usuario.insert(req.body,function(data){
+	    	usuario.insert(req.body,function(data){
     		res.setHeader('Content-Type','application/json');
     		res.send(JSON.stringify(data));
     	})
-
-	}else{
-		var resp={
-			'error':true,
-			'Message':'Error, ingrese todos los campos de usuario'
-		}
-		res.setHeader('Content-Type','application/json');
-		res.send(JSON.stringify(resp));
-	}
 });
 //desde aqui
 router.post('/login',function(req,res){

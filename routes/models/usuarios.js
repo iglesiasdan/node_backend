@@ -16,30 +16,23 @@ usuarioModel.show=function(id,callback){
 	});
 }
 usuarioModel.insert=function(input,callback){
-	connection.query('SELECT * FROM usuario WHERE Username=? OR Correo=?',[input.username,input.correo],function(err,rows,fields){
-		if(err) throw err;
-		if(rows.length==0){
-			usuario={
-				Username:input.username,
-				Correo:input.correo,
-				Contrasena:bcrypt.hashSync(input.contrasena),
-				Privilegio:input.privilegio
+	usuario={
+				Username:input.Username,
+				Correo:input.Correo,
+				Contrasena:bcrypt.hashSync(input.Contrasena),
+				Privilegio:input.Privilegio
 			}
 			connection.query('INSERT INTO usuario SET ?',usuario,function(err,rows,fields){
 				callback({'Error':false,'id':rows.insertId,'message':'Registro guardado exitosamente'});
 			})
-		}else{
-			callback({'Error':true,'message':'El nombre de usuario o el correo ya existe'})
-		}
-	})
 }
 usuarioModel.update=function(id,input,callback){
-	connection.query('UPDATE usuario set Privilegio=? WHERE ID_usuario=?',[input.privilegio,id],function(err,rows,fields){
+	connection.query('UPDATE usuario set Username=?, Correo=?, Privilegio=? WHERE ID_usuario=?',[input.Username,input.Correo,input.Privilegio,id],function(err,rows,fields){
 		callback({'Error':false,'affectedRows':rows.affectedRows,'message':'Registro modificado exitosamente'});
 	})
 }
 usuarioModel.updatePass=function(id,input,callback){
-	connection.query('UPDATE usuario set Privilegio=?,Contrasena=? WHERE ID_usuario=?',[input.privilegio,bcrypt.hashSync(input.contrasena),id],function(err,rows,fields){
+	connection.query('UPDATE usuario set Contrasena=? WHERE ID_usuario=?',[bcrypt.hashSync(input.Contrasena),id],function(err,rows,fields){
 		callback({'Error':false,'affectedRows':rows.affectedRows,'message':'Registro modificado exitosamente'});
 	})
 }
