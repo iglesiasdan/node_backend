@@ -4,7 +4,7 @@ var bcrypt=require('bcrypt-nodejs');
 var arriboModel={};
 //DESDE AQUI
 arriboModel.get=function(callback){
-	connection.query(`SELECT ID_arribo,Fecha_arribo,Observaciones,Numero_IMO,arr.ID_agencia,arr.ID_puerto,Nombre_puerto,arr.ID_buque,Nombre_buque,ag.Nombre_agencia
+	connection.query(`SELECT ID_arribo,Fecha_arribo,Observaciones,b.Abanderamiento,Numero_IMO,arr.ID_agencia,arr.ID_puerto,Nombre_puerto,arr.ID_buque,Nombre_buque,ag.Nombre_agencia
 		FROM arribo AS arr,agencia AS ag, puerto AS p, buque AS b WHERE ag.ID_agencia=arr.ID_agencia AND p.ID_puerto=arr.ID_puerto AND b.ID_buque=arr.ID_buque
 		ORDER BY Fecha_arribo desc`, function(err, rows, fields) {
 	  if (err) {
@@ -14,7 +14,7 @@ arriboModel.get=function(callback){
 	});
 }
 arriboModel.getFrom=function(id,callback){
-	connection.query(`SELECT ID_arribo,Fecha_arribo,Observaciones,Abanderamiento,Numero_IMO,arr.ID_agencia,arr.ID_puerto,Nombre_puerto,arr.ID_buque,Nombre_buque,ag.Nombre_agencia
+	connection.query(`SELECT ID_arribo,Fecha_arribo,Observaciones,Numero_IMO,arr.ID_agencia,arr.ID_puerto,Nombre_puerto,arr.ID_buque,Nombre_buque,ag.Nombre_agencia
 		FROM arribo AS arr,agencia AS ag, puerto AS p, buque AS b WHERE ag.ID_agencia=arr.ID_agencia AND p.ID_puerto=arr.ID_puerto AND b.ID_buque=arr.ID_buque AND ID_arribo>?
 		ORDER BY Fecha_arribo desc`,[id],function(err, rows, fields) {
 	  if (err) {
