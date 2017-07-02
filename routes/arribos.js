@@ -53,6 +53,7 @@ router.put('/:id',function(req,res){
 router.get('/:id',function(req,res){
 	arribos.show(req.params.id,function(data){
 		res.setHeader('Content-Type', 'application/json');
+		console.log(JSON.stringify(data));
     	res.send(JSON.stringify(data));
 	});
 });
