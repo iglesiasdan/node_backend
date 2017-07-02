@@ -20,14 +20,15 @@ usuarioModel.insert=function(input,callback){
 				Username:input.Username,
 				Correo:input.Correo,
 				Contrasena:bcrypt.hashSync(input.Contrasena),
-				Privilegio:input.Privilegio
+				Privilegio:input.Privilegio,
+				Nombre:input.Nombre
 			}
 			connection.query('INSERT INTO usuario SET ?',usuario,function(err,rows,fields){
 				callback({'Error':false,'id':rows.insertId,'message':'Registro guardado exitosamente'});
 			})
 }
 usuarioModel.update=function(id,input,callback){
-	connection.query('UPDATE usuario set Username=?, Correo=?, Privilegio=? WHERE ID_usuario=?',[input.Username,input.Correo,input.Privilegio,id],function(err,rows,fields){
+	connection.query('UPDATE usuario set Username=?, Correo=?, Privilegio=?, Nombre=? WHERE ID_usuario=?',[input.Username,input.Correo,input.Privilegio,input.Nombre,id],function(err,rows,fields){
 		callback({'Error':false,'affectedRows':rows.affectedRows,'message':'Registro modificado exitosamente'});
 	})
 }

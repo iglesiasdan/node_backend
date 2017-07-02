@@ -8,9 +8,9 @@ var bodyParser=require('body-parser');
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({extended:true}));
 
-router.get('/',function(req,res){
+router.get('/estabuques/:id',function(req,res){
 
-	estadisticas.get(function(data){
+	estadisticas.get(req.params.id,function(data){
 		res.setHeader('Content-Type', 'application/json');
     	res.send(JSON.stringify(data));
 	});
