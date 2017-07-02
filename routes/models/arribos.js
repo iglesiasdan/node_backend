@@ -41,14 +41,14 @@ arriboModel.insert=function(input,callback){
 }
 arriboModel.update=function(id,input,callback){
 	arribo={
-		Fecha_arribo:input.Fecha_arribo,
-		ID_buque:input.ID_buque,
-		ID_puerto:input.ID_puerto,
-		ID_agencia:input.ID_agencia,
-		Calado_proa:input.Calado_proa,
-		Calado_popa:input.Calado_popa,
-		Diferencias_calado:input.Diferencias_calado,
-		Observaciones:input.Observaciones
+		Fecha_arribo:input.fecha_arribo,
+		ID_buque:input.id_buque,
+		ID_puerto:input.id_puerto,
+		ID_agencia:input.id_agencia,
+		Calado_proa:input.calado_proa,
+		Calado_popa:input.calado_popa,
+		Diferencias_calado:input.diferencias_calado,
+		Observaciones:input.observaciones
 	}
 	connection.query('UPDATE arribo set ? WHERE ID_arribo=?',[arribo,id],function(err,rows,fields){
 		callback({'Error':false,'affectedRows':rows.affectedRows,'message':'Registro actualizado exitosamente'});
