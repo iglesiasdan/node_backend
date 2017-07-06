@@ -1,4 +1,4 @@
-var express= require('express');
+ar express= require('express');
 var connection=require('./connection');
 var bcrypt=require('bcrypt-nodejs');
 var buqueModel={};
@@ -21,13 +21,13 @@ buqueModel.getFrom=function(id,callback){
 
 //HASTA AQUI
 buqueModel.insert=function(input,callback){
-		console.log(input);
-		connection.query('SELECT * FROM buque WHERE Numero_imo=?',[input.Numero_imo],function(err,rows,fields){
+
+		connection.query('SELECT * FROM buque WHERE Numero_imo=?',[input.numero_imo],function(err,rows,fields){
 		if(err) throw err;
 		if(rows.length==0){
 			buque={
 				Nombre_buque:input.nombre_buque,
-				Numero_imo:input.Numero_imo,
+				Numero_imo:input.numero_imo,
 				Abanderamiento:input.abanderamiento,
 				Eslora:input.eslora,
 				Manga:input.manga,
@@ -39,8 +39,7 @@ buqueModel.insert=function(input,callback){
 				Capacidad_tanques:input.capacidad_tanques,
 				Vol_total:input.vol_total,
 				Fotos:input.fotos
-			};
-			console.log(input);
+			}
 		connection.query('INSERT INTO buque SET ?',buque,function(err,rows,fields){
 			callback({'Error':false,'id':rows.insertId,'message':'Registro insertado exitosamente'});
 		})
@@ -55,21 +54,22 @@ buqueModel.insert=function(input,callback){
 
 }
 buqueModel.update=function(id,input,callback){
-	console.log(input);
 	buque={
-		Nombre_buque:input.Nombre_buque,
-		Abanderamiento:input.Abanderamiento,
-		Numero_imo:input.Numero_imo,
-		Eslora:input.Eslora,
-		Manga:input.Manga,
-		Puntal:input.Puntal,
-		N_tanques_babor:input.N_tanques_babor,
+		Nombre_buque:input.nombre_buque,
+		Abanderamiento:input.abanderamiento,
+		Eslora:input.eslora,
+		Manga:input.manga,
+		Puntal:input.puntal,
+		N_tanques_babor:input.n_tanques_babor,
 		N_tanques_estribor:input.N_tanques_estribor,
-		N_tanques_db:input.N_tanques_db,
-		Total_tanques:input.Total_tanques,
-		Capacidad_tanques:input.Capacidad_tanques,
-		Vol_total:input.Vol_total,
-		Fotos:input.Fotos
+		N_tanques_db:input.n_tanques_db,
+		Total_tanques:input.total_tanques,
+		Capacidad_tanques:input.capacidad_tanques,
+		Vol_total:input.vol_total,
+		Calado_proa:input.calado_proa,
+		Calado_popa:input.calado_popa,
+		Diferencias_calado:input.diferencias_calado,
+		Fotos:input.fotos
 	}
 	connection.query('UPDATE buque set ? WHERE ID_buque=?',[buque,id],function(err,rows,fields){
 		callback({'Error':false,'affectedRows':rows.affectedRows,'message':'Registro actualizado exitosamente'});
