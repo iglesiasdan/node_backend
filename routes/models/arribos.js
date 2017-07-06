@@ -34,7 +34,7 @@ arriboModel.insert=function(input,callback){
 		Calado_popa:input.calado_popa,
 		Diferencias_calado:input.diferencias_calado,
 		Observaciones:input.observaciones,
-		Volumen_total:input.Volumen_total
+		Volumen_total:input.volumen_total
 	}
 	connection.query('INSERT INTO arribo SET ?',arribo,function(err,rows,fields){
 		callback({'Error':false,'id':rows.insertId,'message':'Registro insertado exitosamente'});
@@ -50,7 +50,7 @@ arriboModel.update=function(id,input,callback){
 		Calado_popa:input.calado_popa,
 		Diferencias_calado:input.diferencias_calado,
 		Observaciones:input.observaciones,
-		Volumen_total:input.Volumen_total
+		Volumen_total:input.volumen_total
 	}
 	connection.query('UPDATE arribo set ? WHERE ID_arribo=?',[arribo,id],function(err,rows,fields){
 		callback({'Error':false,'affectedRows':rows.affectedRows,'message':'Registro actualizado exitosamente'});
