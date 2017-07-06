@@ -1,4 +1,4 @@
-ar express= require('express');
+var express= require('express');
 var connection=require('./connection');
 var bcrypt=require('bcrypt-nodejs');
 var buqueModel={};
