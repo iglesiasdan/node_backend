@@ -54,6 +54,7 @@ buqueModel.insert=function(input,callback){
 
 }
 buqueModel.update=function(id,input,callback){
+	console.log(input);
 	buque={
 		Nombre_buque:input.nombre_buque,
 		Abanderamiento:input.abanderamiento,
