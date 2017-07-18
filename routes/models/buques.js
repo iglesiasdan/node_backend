@@ -28,17 +28,17 @@ buqueModel.insert=function(input,callback){
 			buque={
 				Nombre_buque:input.nombre_buque,
 				Numero_imo:input.numero_imo,
-				Abanderamiento:input.abanderamiento,
-				Eslora:input.eslora,
-				Manga:input.manga,
-				Puntal:input.puntal,
-				N_tanques_babor:input.n_tanques_babor,
-				N_tanques_estribor:input.n_tanques_estribor,
-				N_tanques_db:input.n_tanques_db,
-				Total_tanques:input.total_tanques,
-				Capacidad_tanques:input.capacidad_tanques,
-				Vol_total:input.vol_total,
-				Fotos:input.fotos
+				Abanderamiento:input.abanderamiento?input.abanderamiento:'',
+				Eslora:input.eslora?input.eslora:'',
+				Manga:input.manga?input.manga:'',
+				Puntal:input.puntal?input.puntal:'',
+				N_tanques_babor:input.n_tanques_babor?input.n_tanques_babor:'',
+				N_tanques_estribor:input.n_tanques_estribor?input.n_tanques_estribor:'',
+				N_tanques_db:input.n_tanques_db?input.n_tanques_db:'',
+				Total_tanques:input.total_tanques?input.total_tanques:'',
+				Capacidad_tanques:input.capacidad_tanques?input.capacidad_tanques:'',
+				Vol_total:input.vol_total?input.vol_total:'',
+				Fotos:input.fotos?input.fotos:''
 			}
 		connection.query('INSERT INTO buque SET ?',buque,function(err,rows,fields){
 			callback({'Error':false,'id':rows.insertId,'message':'Registro insertado exitosamente'});
